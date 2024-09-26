@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced Love Calculator</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 15px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin-top: 20px;
+            background-color: #404dff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #e81c63;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 2rem;
+        }
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        /* Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .result, .message {
+            animation: fadeIn 2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Advanced Love Calculator</h1>
+        <p>Find out the love percentage between you and your partner!</p>
+
+        <input type="text" id="yourName" placeholder="Your Name" required>
+        <input type="text" id="partnerName" placeholder="Partner's Name" required>
+
+        <button onclick="calculateLove()">Calculate</button>
+
+        <div class="result" id="result"></div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function calculateLove() {
+            var yourName = document.getElementById("yourName").value.trim();
+            var partnerName = document.getElementById("partnerName").value.trim();
+            var resultDiv = document.getElementById("result");
+            var messageDiv = document.getElementById("message");
+
+            // Clear previous results
+            resultDiv.innerHTML = "";
+            messageDiv.innerHTML = "";
+
+            // Basic validation
+            if (yourName === "" || partnerName === "") {
+                resultDiv.innerHTML = "Please enter both names!";
+                return;
+            }
+
+            // Generate random love percentage
+            var loveScore = Math.floor(Math.random() * 101);
+            resultDiv.innerHTML = yourName + " and " + partnerName + "'s love score is: " + loveScore + "%";
+
+            // Generate custom message based on love score
+            var message = "";
+            if (loveScore >= 80) {
+                message = "Wow, you're a perfect match! 💖";
+            } else if (loveScore >= 50) {
+                message = "Not bad! There's definitely potential! 💑";
+            } else if (loveScore >= 30) {
+                message = "It might take some work, but it could happen. 💌";
+            } else {
+                message = "Hmm... maybe just friends for now? 💔";
+            }
+
+            messageDiv.innerHTML = message;
+        }
+    </script>
+
+</body>
+</html>
